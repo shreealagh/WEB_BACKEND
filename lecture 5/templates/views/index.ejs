@@ -1,12 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>hello sde</h1>
-</body>
-</html>
+<%- include("./partials/header") %>
+    
+<%- include("./partials/navbar") %>
+
+    <section class="container  w-50 ">
+        <div class="row">
+        <%for(let blog of blogs){%>
+            
+                
+                  <div class="col-lg-4 col-md-6 mb-3">
+                    <div class="card mb-3">
+                        <img src="<%=blog.imageUrl%>" class="card-img-top" alt="<%=blog.title%> ">
+                        <div class="card-body">
+                            <h5 class="card-title"><%=blog.title%></h5>
+                            <p class="card-text"><%=blog.content%> </p>
+                            <p class="card-text">By~<%=blog.author%> </p>
+                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+
+                            <a href="/blogs/<%=blog.id%>" class="btn btn-sm btn-dark">Read More</a>
+                            <a href="/blogs/<%=blog.id%>/edit" class="btn btn-sm btn-warning">Edit</a>
+                            <form class="d-inline-block" action="/blogs/<%=blog.id%>?_method=DELETE" method="post">
+                                <button class="btn btn-sm btn-danger">Delete</button>
+                            </form>
+                        </div>
+                    </div>
+                  </div>
+                 
+               
+            
+        <%}%> 
+    </div>
+    </section>
+   
+    <%- include("./partials/footter") %>
